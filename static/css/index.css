@@ -1,7 +1,7 @@
 body {
   font-family: 'Noto Sans', sans-serif;
+  /* position: relative; */
 }
-
 
 .footer .icon-link {
     font-size: 25px;
@@ -17,6 +17,32 @@ body {
   font-variant: small-caps;
 }
 
+.background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.hero-header {
+  position: relative;
+  min-height: 100vh; /* Ensure the hero section is at least the height of the viewport */
+  overflow: hidden;
+  color: white;
+  /* text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6); */
+}
+
+.hero-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  z-index: 2;
+}
 
 .teaser .hero-body {
   padding-top: 0;
@@ -129,9 +155,130 @@ body {
   background: #000000;
 }
 
-.eql-cntrb { 
+.eql-cntrb {
   font-size: smaller;
 }
 
+.custom-link-block {
+  position: fixed;
+  top: 15px;
+  right: -10%;
+  transform: translateX(-50%);
+}
 
+/* .custom-button { */
+/*   background-color: transparent; */
+/*   /1* border: 3px solid white; *1/ */
+/*   padding: 10px 20px; */
+/*   font-size: 1.2rem; /1* Adjust this for larger text *1/ */
+/*   text-transform: uppercase; */
+/*   color: white; */
+/*   transition: all 0.3s ease; */
+/*   border-radius: 0; /1* Removes rounded corners *1/ */
+/*   cursor: pointer; */
+/* } */
 
+/* .custom-button:hover { */
+/*   background-color: rgba(0, 0, 0, 0.1); */
+/* } */
+
+/* .custom-icon { */
+/*   font-size: 1.2rem; /1* Adjust this for larger icon size *1/ */
+/*   margin-right: 8px; */
+/* } */
+
+/* .custom-button span { */
+/*   font-size: 1.2rem; /1* Ensures larger text size *1/ */
+/* } */
+/* Parent container to hold both buttons side by side */
+
+.button-container {
+  display: flex; /* Enable Flexbox */
+  flex-direction: row; /* Arrange buttons horizontally */
+  align-items: center; /* Vertically align buttons */
+  justify-content: flex-end; /* Align buttons to the right */
+  gap: 10px; /* Add proper space between buttons */
+  padding-right: 10px; /* Adjust padding from the right */
+  width: auto; /* Let the width adjust automatically */
+  z-index: 1000; /* Ensure the container stays on top */
+  margin: 0; /* Ensure there is no margin */
+  padding: 0; /* Ensure there is no padding */
+  /* right: 0; /1* Align to the right *1/ */
+}
+
+.custom-link-block {
+  display: inline-block; /* Ensure buttons are inline to be aligned horizontally */
+}
+
+.custom-button {
+  background-color: rgba(255, 255, 255, 1.0); /* White background */
+  padding: 12px 20px; /* Button padding */
+  font-size: 1.2rem; /* Button text size */
+  color: black; /* Button text color */
+  border: 2px solid black; /* Button border */
+  border-radius: 6px; /* Rounded corners */
+  cursor: pointer; /* Pointer on hover */
+  box-sizing: border-box; /* Apply box-sizing only to buttons */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+  min-width: 200px; /* Ensure buttons have enough minimum width */
+  text-align: center; /* Center the text and icons */
+  margin-right: 5px; /* Space between buttons */
+}
+
+.custom-button:hover {
+  background-color: rgba(255, 255, 255, 0.5); /* Hover effect */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15); /* Hover shadow */
+}
+
+.custom-button:active {
+  background-color: rgba(255, 255, 255, 0.2); /* Click effect */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Active shadow */
+  transform: translateY(2px); /* Pressed button effect */
+}
+
+.custom-button i {
+  font-size: 1.4rem; /* Icon size */
+  margin-right: 8px; /* Space between icon and text */
+}
+
+/* Optional: Ensure span inside button has the correct font size */
+.custom-button span {
+font-size: 1.2rem;
+}
+
+.icon-padding {
+padding-top: 5px;
+padding-right: 5px; /* Adjust the padding as needed */
+font-size: 25px;
+}
+
+.topnav {
+  position: fixed;
+  overflow: hidden;
+  /* background-color: #333; */
+  background-color: rgba(0, 0, 0, 0.5);
+  /* width: 100%; */
+  top: 0;
+  right: 0;
+  z-index: 3;
+  border-radius: 10px;
+}
+
+.topnav a {
+  float: right;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #04AA6D;
+  color: white;
+}
