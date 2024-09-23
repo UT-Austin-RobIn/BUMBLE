@@ -59,10 +59,11 @@
       <div class="columns is-centered">
         <div class="column has-text-centered">
           <!-- Add title here -->
-          <h1 class="title is-1" style="color: white; font-weight: bold; margin: 0 auto; text-align: center;">
+          <!-- make the size of title greater than 3rem -->
+          <h1 class="title is-1 publication-title is-size-1-mobile" style="color: white; font-weight: bold; margin: 0 auto; text-align: center; font-size: 12rem;">
               BUMBLE
           </h1>
-          <h2 class="title is-3" style="color: white; font-weight: bold; margin: 0 auto; text-align: center;">
+          <h2 class="title is-4 publication-title is-size-4-mobile" style="color: white; margin: 0 auto; text-align: center; font-size: 3rem;">
               Unifying Reasoning and Acting with VLMs for Building-Wide Mobile Manipulation
           </h2>
           <div class="column has-text-centered">
@@ -70,7 +71,7 @@
               <a href="https://github.com/YOUR REPO HERE" target="_blank"
                 class="external-link button is-normal is-rounded">
                 <span class="icon">
-                  <i class="fab fa-github"></i>
+                  <i class="fab fa-github fa-lg"></i>
                 </span>
                 <span>Code</span>
               </a>
@@ -78,8 +79,8 @@
 
             <span class="link-block">
               <a href="https://arxiv.org/abs/<ARXIV PAPER ID>" target="_blank"
-                class="external-link button is-normal is-rounded ">
-                <span class="icon">
+                class="external-link button is-rounded is-normal">
+                <span class="icon fa-lg">
                   <i class="ai ai-arxiv"></i>
                 </span>
                 <span>arXiv</span>
@@ -92,15 +93,14 @@
     </div>
   </div>
   <!-- Authors section positioned at the bottom -->
-  <div id="author-box" class="author-box" style="position: absolute; bottom: 0; width: 100%; background-color: rgba(255, 255, 255, 0.8); padding: 10px; text-align: center;">
-    <!-- <br><br><br> -->
-    <!-- <h2 class="subtitle is-5 has-text-centered" style="color: #BF5700; font-weight: bold;"> -->
-    <!--   <!-1- Rutav Shah, Albert Yu<sup>*</sup>, Yifeng Zhu<sup>*</sup>, Yuke Zhu<sup>†</sup>, Roberto Martín-Martín<sup>†</sup> -1-> -->
-    <!-- </h2> -->
-    <!-- <p class="has-text-centered is-8" style="color: black;"> -->
-    <!--   <sup>*</sup>Equal contribution, <sup>†</sup>Equal advising -->
-    <!-- </p> -->
-    <!-- <br> -->
+  <div id="author-box" class="author-box" style="position: absolute; bottom: 0; width: 100%; background-color: rgba(255, 255, 255, 0.8); padding: 20px; text-align: center;">
+    <h2 class="subtitle is-4 has-text-centered is-size-4-mobile" style="color: #BF5700; font-weight: bold;">
+      Rutav Shah, Albert Yu, Yifeng Zhu, Yuke Zhu<sup>†</sup>, Roberto Martín-Martín<sup>†</sup>
+    </h2>
+    <p class="has-text-centered is-8" style="color: black;">
+      <sup>†</sup>Equal advising
+    </p>
+    <br>
     <h2 class="subtitle has-text-centered is-4" style="color: #BF5700; font-weight: bold;">
       The University of Texas at Austin
     </h2>
@@ -116,7 +116,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ullamcorper tellus sed ante aliquam tempus. Etiam porttitor urna feugiat nibh elementum, et tempor dolor mattis. Donec accumsan enim augue, a vulputate nisi sodales sit amet. Proin bibendum ex eget mauris cursus euismod nec et nibh. Maecenas ac gravida ante, nec cursus dui. Vivamus purus nibh, placerat ac purus eget, sagittis vestibulum metus. Sed vestibulum bibendum lectus gravida commodo. Pellentesque auctor leo vitae sagittis suscipit.
+           To operate at a building scale, service robots must perform very long-horizon mobile manipulation tasks by navigating to different rooms, accessing different floors, and interacting with a wide and unseen range of everyday objects. We refer to these tasks as Building-wide Mobile Manipulation. To tackle these inherently long-horizon tasks, we propose BUMBLE, a unified VLM-based framework integrating open-world RGBD perception, a wide spectrum of gross-to-fine motor skills, and dual-layered memory. Our extensive evaluation (90+ hours) indicates that BUMBLE outperforms multiple baselines in long-horizon building-wide tasks that require sequencing up to 12 ground truth skills spanning 15 minutes per trial. BUMBLE achieves 47.1% success rate averaged over 70 trials in different buildings, tasks, and scene layouts from different starting rooms and floors. Our user study demonstrates 22% higher satisfaction with our method than state-of-the-art mobile manipulation methods. Finally, we demonstrate the potential of using increasingly capable foundation models to push per- formance further.
           </p>
         </div>
       </div>
