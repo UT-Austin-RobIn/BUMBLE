@@ -1,48 +1,70 @@
-# Academic Project Page Template
-This is an academic paper project page template.
+# BUMBLE: Unifying Reasoning and Acting with Vision-Language Models for Building-wide Mobile Manipulation
+![Image](assets/BUMBLE_pull_fig.svg)
+[Rutav Shah](https://shahrutav.github.io/), [Albert Yu](https://scholar.google.com/citations?user=ZzURcb4AAAAJ&hl=en), [Yifeng Zhu](https://zhuyifengzju.github.io/), [Yuke Zhu](https://www.cs.utexas.edu/~yukez/)<sup>†</sup>, [Roberto Martín-Martín](https://robertomartinmartin.com/)<sup>†</sup>  
+<sup>†</sup> Equal Advising
 
+[[Paper]](https://arxiv.org/abs/2410.06237)    [[Project Website]](https://robin-lab.cs.utexas.edu/BUMBLE/)
 
-Example project pages built using this template are:
-- https://vision.huji.ac.il/spectral_detuning/
-- https://vision.huji.ac.il/podd/
-- https://dreamix-video-editing.github.io
-- https://vision.huji.ac.il/conffusion/
-- https://vision.huji.ac.il/3d_ads/
-- https://vision.huji.ac.il/ssrl_ad/
-- https://vision.huji.ac.il/deepsim/
+# Setup
 
+### Installing ROS
+Follow the guide provided at the official ROS wiki to install [ROS Noetic](https://wiki.ros.org/noetic/Installation/Ubuntu) on your system.
 
+### Setting up Python Environment
+```bash
+git clone git@github.com:UT-Austin-RobIn/BUMBLE.git
+conda create -y -n bumble python=3.9
+conda activate bumble
+cd BUMBLE
+python -m pip install -r requirements.txt
+python -m pip install -r rospy_requirements.txt
+git clone https://github.com/mjd3/tracikpy.git
+python -m pip install tracikpy/
+python -m pip install -e .
+```
 
-## Start using the template
-To start using the template click on `Use this Template`.
+### Installing GSAM:
+Download the SAM-HQ weights from the [original repository](https://github.com/SysCV/sam-hq?tab=readme-ov-file#model-checkpoints). We use the weights of the model:  [ViT-B HQ-SAM model](https://drive.google.com/file/d/11yExZLOve38kRZPfRx_MRxfIAKmfMY47/view)  
+Set the environemnt variable: 
+```
+export SAM_CKPT_PATH=/path/to/sam_hq_vit_b.pth
+```
+Installing GSAM:
+```bash
+git clone git@github.com:IDEA-Research/Grounded-Segment-Anything.git
+cd Grounded-Segment-Anything/GroundingDINO && python setup.py build && python setup.py install
+cd ../../
+python -m pip install -e Grounded-Segment-Anything/segment_anything/
+```
 
-The template uses html for controlling the content and css for controlling the style. 
-To edit the websites contents edit the `index.html` file. It contains different HTML "building blocks", use whichever ones you need and comment out the rest.  
+### Setting up VLM API
+Set the environment variable `OPENAI_API_KEY` to your OpenAI API key.
 
-**IMPORTANT!** Make sure to replace the `favicon.ico` under `static/images/` with one of your own, otherwise your favicon is going to be a dreambooth image of me.
+### Setting up Building Occupancy Map
+We use Pal's rosservice (`change_map`) to set the map for the Tiago robot (See `set_floor_map` inside `bumble/tiago/ros_restrict`). You should add similar functionality to set the 2D occupancy map for your ROS packages programmatically.  
 
-## Components
-- Teaser video
-- Images Carousel
-- Youtube embedding
-- Video Carousel
-- PDF Poster
-- Bibtex citation
+After setting the map, configure the landmark locations for the GoToLandmark skill. You can add your own landmarks or use the provided [landmarks](https://utexas.box.com/s/el33g5od55rku2qheddhbmembossis6p).  
+Example of landmark image structure: 
+```
+bumble/tiago/skills/landmark_images/{BUILDING_NAME}_landmark_images{FLOOR_NUM}/{BUILDING_NAME}{FLOOR_NUM}_{LANDMARK_INDEX}.jpg
+```  
+Note: The provided landmarks correspond to university buildings used in the experiments and are mapped to the relevant building occupancy maps.  
 
-## Tips:
-- The `index.html` file contains comments instructing you what to replace, you should follow these comments.
-- The `meta` tags in the `index.html` file are used to provide metadata about your paper 
-(e.g. helping search engine index the website, showing a preview image when sharing the website, etc.)
-- The resolution of images and videos can usually be around 1920-2048, there rarely a need for better resolution that take longer to load. 
-- All the images and videos you use should be compressed to allow for fast loading of the website (and thus better indexing by search engines). For images, you can use [TinyPNG](https://tinypng.com), for videos you can need to find the tradeoff between size and quality.
-- When using large video files (larger than 10MB), it's better to use youtube for hosting the video as serving the video from the website can take time.
-- Using a tracker can help you analyze the traffic and see where users came from. [statcounter](https://statcounter.com) is a free, easy to use tracker that takes under 5 minutes to set up. 
-- This project page can also be made into a github pages website.
-- Replace the favicon to one of your choosing (the default one is of the Hebrew University). 
-- Suggestions, improvements and comments are welcome, simply open an issue or contact me. You can find my contact information at [https://pages.cs.huji.ac.il/eliahu-horwitz/](https://pages.cs.huji.ac.il/eliahu-horwitz/)
+# Usage
+To run the main script (`rw_eval.py`) for BUMBLE, run the following command:
+```bash
+python rw_eval.py --run_vlm --add_selection_history --add_past --exec --method ours --floor_num <FLOOR_NUM> --bld <BUILDING_NAME> --eval_id 2 --n_eval 1 --run_dir <PATH_TO_EXP_DIR>
+```
+To prevent long-term memory from being added, remove the --add_past flag.  
 
-## Acknowledgments
-Parts of this project page were adopted from the [Nerfies](https://nerfies.github.io/) page.
+# Citation
+```bash
+@article{shah2024bumble,
+    title={BUMBLE: Unifying Reasoning and Acting with Vision-Language Models for Building-wide Mobile Manipulation},
+    author={Rutav Shah and Albert Yu and Yifeng Zhu and Yuke Zhu and Roberto Martín-Martín},
+    journal={arXiv preprint arXiv:2410.06237},
+    year={2024},
+}
+```
 
-## Website License
-<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+# [Acknowledgements](Acknowledgements.md)
