@@ -62,8 +62,9 @@ To prevent long-term memory from being added, remove the --add_past flag.
 @article{shah2024bumble,
    title={BUMBLE: Unifying Reasoning and Acting with Vision-Language Models for Building-wide Mobile Manipulation},
    author={Shah, Rutav and Yu, Albert and Zhu, Yifeng and Zhu, Yuke and Mart{\'\i}n-Mart{\'\i}n, Roberto},
-   journal={arXiv preprint arXiv:2410.06237},
-   year={2024}
+   booktitle={2025 IEEE International Conference on Robotics and Automation (ICRA)},
+   year={2025},
+   organization={IEEE}
 }
 ```
 
